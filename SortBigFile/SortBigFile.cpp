@@ -5,9 +5,18 @@
 #include <locale>
 #include <chrono>
 
+#include "Utils.h"
 #include "FileGenerator.h"
 #include "ChunkSorter.h"
 #include "FileMerger.h"
+
+void cleanupTempFiles(const std::vector<std::string>& files, const std::string& result) {
+    for (const auto& f : files) {
+        if (f != result) {
+            deleteFile(f);
+        }
+    }
+}
 
 int main() {
     setlocale(LC_ALL, "");
@@ -40,6 +49,9 @@ int main() {
     std::string finalFile = FileMerger::mergeAll(chunks);
     auto t5 = std::chrono::steady_clock::now();
     mark("Слияние файлов", t4, t5);
+
+    // 4. Удаление временных файлов (все chunk_*.txt)
+    cleanupTempFiles(chunks, finalFile);
 
     std::cout << "\nГОТОВО! Итоговый отсортированный файл: "
         << finalFile << "\n";

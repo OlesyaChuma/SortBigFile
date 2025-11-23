@@ -30,6 +30,8 @@ std::string FileMerger::mergeTwo(
     }
 
     int x, y;
+
+    // Первое чтение
     bool aOK = static_cast<bool>(A >> x);
     bool bOK = static_cast<bool>(B >> y);
 
@@ -59,9 +61,9 @@ std::string FileMerger::mergeTwo(
     B.close();
     out.close();
 
-    // Удаляем входные файлы ТОЛЬКО если всё успешно
-    if (!f1.empty()) deleteFile(f1);
-    if (!f2.empty()) deleteFile(f2);
+    // ❗ВАЖНО: НЕ УДАЛЯЕМ файлы здесь!
+    // Их удалит mergeAll ПОСЛЕ того, как убедится,
+    // что файл больше не участвует в слиянии.
 
     std::cout << "Готово: " << outFile << std::endl;
 
