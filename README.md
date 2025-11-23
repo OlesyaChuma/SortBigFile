@@ -51,13 +51,13 @@ SortBigFile/
 
 1. Открыть решение `SortBigFile.sln` в Visual Studio.
 2. Собрать проект в Debug или Release.
-3. Запустить `main.cpp`.
+3. Запустить `SortBigFile.cpp`.
 
 ---
 
 ## Настройки
 
-В `main.cpp` можно изменить параметры:
+В `SortBigFile.cpp` можно изменить параметры:
 
 ```cpp
 const size_t NUMBERS = 500'000'000;   // количество чисел (~2 ГБ)
