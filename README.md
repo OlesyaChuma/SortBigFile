@@ -34,7 +34,7 @@ SortBigFile/
 ├── README.md
 ├── SortBigFile.sln
 │
-└── SortBigFile/
+├── SortBigFile.cpp
 ├── FileGenerator.cpp
 ├── ChunkSorter.cpp
 ├── FileMerger.cpp
